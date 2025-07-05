@@ -1,15 +1,17 @@
-import sys, json
-sys.path.append(r'C:\Users\Admin\Documents\flowmono')
-
-from sentiment_analysis.schemas import Sentiment, PhraseStats, AnalysisResponse
+from schemas import Sentiment, PhraseStats
 
 from google import genai
 from google.genai import types
 from typing import Any
 
-from clients import Gemini
+from dotenv import load_dotenv
+load_dotenv()
 
-client = Gemini().client
+import os
+
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+client = genai.Client(api_key=GOOGLE_API_KEY)
 
 
 class SentimentAnalyzer:
