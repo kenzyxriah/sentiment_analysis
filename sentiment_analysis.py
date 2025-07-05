@@ -1,9 +1,9 @@
-import sys
-
-sys.path.append(r'C:\Users\Admin\Documents\flowmono')
-
 from sentiment_analysis.utils import fetch_comments
-from helper.utils import logger
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 from pydantic import BaseModel, Field, model_validator
 from fastapi import APIRouter, HTTPException
 from typing import Any
